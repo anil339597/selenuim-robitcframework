@@ -1,0 +1,23 @@
+name: Robot Automation
+
+on: [push] # This workflow will be triggered on push events
+
+jobs:
+  run_tests:
+    name: Run Robot Tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2 # This step checks out the repository code
+
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x' # Replace 'x' with the appropriate Python version for your Robot Framework setup
+
+    - name: Install Robot Framework
+      run: pip install robotframework
+
+    - name: Execute Tests
+      run: robot path/to/your/tests # Replace 'path/to/your/tests' with the appropriate path to your test files
